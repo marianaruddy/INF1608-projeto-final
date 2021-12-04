@@ -35,15 +35,15 @@ int main(){
     
     double x = 1.5;
     double y = 1.5;
-    
-    printf("\ncaso estimativa inicial (s, t) = (0, 0):\n");
 
     double s0 = 0.0;
     double t0 = 0.0;
     
+    printf("\ncaso estimativa inicial (%f, %f) = (0, 0):\n", s0, t0);
+    
     calc_coord_parametricas(x, y, s0, t0, x_vertices, y_vertices, tol, 50);
     
-    printf("\ncaso estimativa inicial aleatoria:");
+    printf("\ncaso estimativa inicial aleatoria:\n");
     
     srand( (unsigned)time(NULL) );
 
