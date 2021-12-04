@@ -53,6 +53,13 @@ int main(){
     printf("\ts0=%g \tt0=%g", s0, t0);
     
     calc_coord_parametricas(x, y, s0, t0, x_vertices, y_vertices, tol, 50);
+    
+    printf("\ncaso coordenadas parametricas estao no intervalo [−2, 2]:\n");
+
+    s0 = 0.0;
+    t0 = 0.0;
+    
+    calc_coord_parametricas(2.5, 2.5, s0, t0, x_vertices, y_vertices, tol, 50);
 
     printf("\ncaso celulas degeneradas:\n");
 
@@ -64,6 +71,8 @@ int main(){
     y_vertices[2] = y_vertices[0];
     y_vertices[3] = y_vertices[0];
     calc_coord_parametricas(x, y, s0, t0, x_vertices, y_vertices, tol, 50);
+
+    printf("\ncaso 3d:\n");
 
     return 0;
 }
