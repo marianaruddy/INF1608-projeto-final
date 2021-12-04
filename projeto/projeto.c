@@ -61,15 +61,15 @@ void calc_coord (double s, double t, double x, double y, double** jacobiana_inve
             return;
         }
     }
-    printf("\n[NAO CONVERGE] s = %g \t t = %g\n", s, t);
+    printf("\n[NAO CONVERGE]\n");
 }
 
-void calc_coord_parametricas (double x, double y, double* x_vertices, double* y_vertices, double tol, double num_max_iter ) {
+void calc_coord_parametricas (double x, double y, double s0, double t0, double* x_vertices, double* y_vertices, double tol, double num_max_iter ) {
     int n = 2;
     double** jacobiana = criamat(n, n);
     double** jacobiana_inversa = criamat(n, n);
-    double s = 0.3;
-    double t = 0.3;
+    double s = s0;
+    double t = t0;
     calc_jacobiana(jacobiana, s, t, x_vertices, y_vertices);
     calc_jacobiana_inversa(jacobiana, jacobiana_inversa);
     calc_coord(s, t, x, y, jacobiana_inversa, tol, num_max_iter,x_vertices, y_vertices);

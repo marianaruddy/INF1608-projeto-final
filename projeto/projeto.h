@@ -18,6 +18,6 @@ void calc_jacobiana_inversa (double** jacobiana, double** jacobiana_inversa);
 
 void calc_coord (double s, double t, double x, double y, double** jacobiana_inversa, double tol, int num_max_iter, double* x_vertices, double* y_vertices);
 
-void calc_coord_parametricas (double x, double y, double* x_vertices, double* y_vertices, double tol, double num_max_iter);
+void calc_coord_parametricas (double x, double y, double s0, double t0, double* x_vertices, double* y_vertices, double tol, double num_max_iter);
 
 
