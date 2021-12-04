@@ -40,14 +40,14 @@ double calc_dvds (double t, double* y_vertices) {
 }
 
 double calc_dvdt (double s, double* y_vertices) {
-    double dvdt = - ( (-1.0+s)*y_vertices[0] + (-1.0-s)*y_vertices[1] + (1.0+s)*y_vertices[2] + (1.0-s)*y_vertices[3] ) / 4.0;
+    double dvdt = - ( (-1.0+s)*y_vertices[0] + (1.0-s)*y_vertices[1] + (1.0+s)*y_vertices[2] + (-1.0-s)*y_vertices[3] ) / 4.0;
     return dvdt;
 }
 
 void calc_jacobiana (double** jacobiana, double s, double t, double* x_vertices, double* y_vertices) {
     double duds = calc_duds(s, x_vertices);
-    double dudt = calc_dudt(t, y_vertices);
-    double dvds = calc_dvds(s, x_vertices);
+    double dudt = calc_dudt(t, x_vertices);
+    double dvds = calc_dvds(s, y_vertices);
     double dvdt = calc_dvdt(t, y_vertices);
 
     jacobiana[0][0] = duds;     jacobiana[0][1] = dudt;
@@ -68,8 +68,9 @@ void calc_coord (double s, double t, double x, double y, double** jacobiana_inve
     for(int i = 0; i < num_max_iter; i++) {
         s -= (jacobiana_inversa[0][0] * u(x, s, t, x_vertices) + jacobiana_inversa[0][1] * v(y, s, t, y_vertices));
         t -= (jacobiana_inversa[1][0] * u(x, s, t, x_vertices) + jacobiana_inversa[1][1] * v(y, s, t, y_vertices));
-        if (u(x, s, t, x_vertices) < tol || v(y, s, t, y_vertices) < tol) {
-            printf("\n[%d] s = %g \t t = %g\n", i, s, t);
+        printf("\n[%d] s = %lf \t t = %lf\n", i, s, t);
+        if (fabs(u(x, s, t, x_vertices)) < tol || fabs(v(y, s, t, y_vertices)) < tol) {
+            // printf("\n[%d] s = %g \t t = %g\n", i, s, t);
             return;
         }
     }
