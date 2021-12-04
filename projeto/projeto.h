@@ -1,7 +1,5 @@
 #include "matriz.h"
 
-double newton_raphson (double x, double f (double x), double f_derivada (double x), double tol, int num_max_iter);
-
 double u (double x, double s, double t, double* x_vertices);
 
 double v (double y, double s, double t, double* y_vertices);

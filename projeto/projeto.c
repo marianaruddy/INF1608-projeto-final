@@ -2,18 +2,6 @@
 #include <math.h>
 #include "matriz.h"
 
-double newton_raphson(double x, double f (double x), double f_derivada (double x), double tol, int num_max_iter) { // ESSA FUNÇÃO NÃO ESTÁ SENDO USADA!!
-    for(int i = 0; i < num_max_iter; i++) {
-        double fx = f(x);
-        double dfx = f_derivada(x);
-        double deltax = -fx/dfx; 
-        x += deltax;
-        if (fabs(dfx) < tol || fabs(fx) < tol) {
-            return x;
-        }
-    }
-}
-
 double u (double x, double s, double t, double* x_vertices) {
     double f = ( (1.0-s)*(1.0-t)*x_vertices[0] + (1.0-s)*(1.0+t)*x_vertices[1] + (1.0+s)*(1.0+t)*x_vertices[2] + (1.0+s)*(1.0-t)*x_vertices[3] ) / 4.0;
     return x - f;
