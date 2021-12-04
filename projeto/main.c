@@ -12,15 +12,25 @@ int main(){
     double* x_vertices = criavet(4);
     double* y_vertices = criavet(4);
 
-    x_vertices[0] = 2.0;
-    x_vertices[1] = -2.0;
+    // x_vertices[0] = 2.0;
+    // x_vertices[1] = -2.0;
+    // x_vertices[2] = 2.0;
+    // x_vertices[3] = -2.0;
+    
+    // y_vertices[0] = 2.0;
+    // y_vertices[1] = 2.0;
+    // y_vertices[2] = -2.0;
+    // y_vertices[3] = -2.0;
+
+    x_vertices[0] = -2.0;
+    x_vertices[1] = 2.0;
     x_vertices[2] = 2.0;
     x_vertices[3] = -2.0;
     
-    y_vertices[0] = 2.0;
-    y_vertices[1] = 2.0;
-    y_vertices[2] = -2.0;
-    y_vertices[3] = -2.0;
+    y_vertices[0] = -2.0;
+    y_vertices[1] = -2.0;
+    y_vertices[2] = 2.0;
+    y_vertices[3] = 2.0;
     
     double x = 1.5;
     double y = 1.5;
