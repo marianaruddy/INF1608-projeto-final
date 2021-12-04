@@ -40,25 +40,24 @@ void calc_jacobiana (double** jacobiana, double s, double t, double* x_vertices,
 
     jacobiana[0][0] = duds;     jacobiana[0][1] = dudt;
     jacobiana[1][0] = dvds;     jacobiana[1][1] = dvdt;
-    printf("\n jacobiana:\n");
-    print_mat((const double **)jacobiana, 2, 2);
 }
 
 void calc_jacobiana_inversa (double** jacobiana, double** jacobiana_inversa) {
     double denominador = jacobiana[0][1] * jacobiana[1][0] - jacobiana[1][1]  * jacobiana[0][0];
+    if(denominador == 0) {
+        printf("MATRIZ NAO INVESIVEL");
+        return;
+    }
     jacobiana_inversa[0][0] = -jacobiana[1][1] / denominador;       jacobiana_inversa[0][1] = jacobiana[0][1] / denominador;
     jacobiana_inversa[1][0] = jacobiana[1][0] / denominador;        jacobiana_inversa[1][1] = -jacobiana[0][0] / denominador;
-    printf("\n jacobiana_inversa:\n");
-    print_mat((const double **)jacobiana_inversa, 2, 2);
 }
 
 void calc_coord (double s, double t, double x, double y, double** jacobiana_inversa, double tol, int num_max_iter, double* x_vertices, double* y_vertices) {
     for(int i = 0; i < num_max_iter; i++) {
         s -= (jacobiana_inversa[0][0] * u(x, s, t, x_vertices) + jacobiana_inversa[0][1] * v(y, s, t, y_vertices));
         t -= (jacobiana_inversa[1][0] * u(x, s, t, x_vertices) + jacobiana_inversa[1][1] * v(y, s, t, y_vertices));
-        printf("\n[%d] s = %lf \t t = %lf\n", i, s, t);
         if (fabs(u(x, s, t, x_vertices)) < tol || fabs(v(y, s, t, y_vertices)) < tol) {
-            // printf("\n[%d] s = %g \t t = %g\n", i, s, t);
+            printf("\n[%d] s = %g \t t = %g\n", i, s, t);
             return;
         }
     }
