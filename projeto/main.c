@@ -75,7 +75,7 @@ int main(){
     
     y_vertices[2] = y_vertices[0];
     y_vertices[3] = y_vertices[0];
-    // calc_coord_parametricas(x, y, s0, t0, x_vertices, y_vertices, tol, 50);
+    calc_coord_parametricas(x, y, s0, t0, x_vertices, y_vertices, tol, 50);
 
     printf("\ncaso 3d:\n");
 
